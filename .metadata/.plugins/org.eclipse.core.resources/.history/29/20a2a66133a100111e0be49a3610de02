@@ -1,0 +1,141 @@
+package edu.giocc.EventMachine;
+
+import java.util.HashMap;
+
+import edu.giocc.MinDispatch.Event;
+import edu.giocc.MinDispatch.EventDispatcher;
+import edu.giocc.MinDispatch.Handler;
+
+public class ChatAIEventMachine {
+	private static class User {
+		public String name;
+		
+		public User(String name) {
+			this.name = name;
+		}
+	}
+	
+	private static class ChatAI {
+		private static class AIEvent extends Event {
+			public String message;
+		}
+		
+		private static class Greeting extends AIEvent {
+			public String message = "Hello to you";
+		}
+
+		private static class Farewell extends AIEvent {
+			public String message = "Goodbye to you";
+		}
+		
+		private static class Objection extends AIEvent {
+			public String message = "I object!";
+		}
+		
+		private static class AnswerToLife extends AIEvent {
+			public String message = "42";
+		}
+		
+		public String name;
+		public EventDispatcher responseDispatcher;
+		public HashMap<String, Event> respMap;
+		
+		public ChatAI(String name) {
+			this.name = name;
+			this.responseDispatcher = new EventDispatcher();
+			this.respMap = new HashMap<String, Event>();
+			respMap.put("hello", new Greeting());
+			respMap.put("goodbye", new Farewell());
+			respMap.put("gio da bessss", new Objection());
+			respMap.put("answer to life", new AnswerToLife());
+			
+			responseDispatcher.registerChannel(Event.class, new Handler() {
+				@Override
+				public void dispatch(Event evt) {
+					EventQueue.getInstance().enqueue(evt);
+				}
+			});
+		}
+		
+		public void respond(String request) {		
+			Event evt = respMap.get(request);
+			if (evt != null)
+				responseDispatcher.dispatch(evt);
+		}
+	}
+	
+	private static class UserArrival extends Event {
+		public User user;
+		
+		public UserArrival(User user) {
+			this.user = user;
+		}
+	}
+	
+	private static class UserDeparture extends Event {
+		public User user;
+		
+		public UserDeparture(User user) {
+			this.user = user;
+		}
+	}
+	
+	private static class UserMessage extends Event {
+		public User user;
+		public String message;
+
+		public UserMessage(User user, String message) {
+			this.user = user;
+			this.message = message;
+		}
+	}
+
+	public static ChatAI ai;
+	
+	public static void main(String[] args) {
+		EventDispatcher dispatcher = new EventDispatcher();
+		ai = new ChatAI("bot");
+		
+		dispatcher.registerChannel(UserArrival.class, new Handler() {
+			@Override
+			public void dispatch(Event evt) {
+				UserArrival arrival = (UserArrival)evt;
+				
+				System.out.println(arrival.user.name + " has entered the room.");
+			}
+		});
+		
+		dispatcher.registerChannel(UserDeparture.class, new Handler() {
+			@Override
+			public void dispatch(Event evt) {
+				UserDeparture departure = (UserDeparture)evt;
+				
+				System.out.println(departure.user.name + " has left the room.");
+			}
+		});
+		
+		dispatcher.registerChannel(UserMessage.class, new Handler() {
+			@Override
+			public void dispatch(Event evt) {
+				UserMessage message = (UserMessage)evt;
+				String userMessage = String.format("%s: %s", message.user.name, message.message);
+				
+				ai.respond(message.message);
+				System.out.println(userMessage);
+			}
+		});
+		
+		User foo = new User("foo");
+		User bar = new User("bar");
+		EventQueue.getInstance().enqueue(new UserArrival(foo));
+		EventQueue.getInstance().enqueue(new UserArrival(bar));
+		EventQueue.getInstance().enqueue(new UserMessage(foo, "hello, bar!"));
+		EventQueue.getInstance().enqueue(new UserMessage(bar, "hello, foo!"));
+		EventQueue.getInstance().enqueue(new UserMessage(foo, "goodbye, bar!"));
+		EventQueue.getInstance().enqueue(new UserDeparture(foo));
+		
+		while (!EventQueue.getInstance().isEmpty()) {
+			dispatcher.dispatch(EventQueue.getInstance().dequeue());
+		}
+	}
+}

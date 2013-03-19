@@ -1,0 +1,34 @@
+package devs;
+
+public class SortedPriorityQueue<K, V> implements PriorityQueue<K, V> {
+
+	@Override
+	public boolean isEmpty() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public int size() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public devs.PriorityQueue.Entry<K, V> min() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void insert() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void removeMin() {
+		// TODO Auto-generated method stub
+
+	}
+}

@@ -1,0 +1,24 @@
+1329366677354	Rename method 'top'
+1329366824762	Rename field 'routes'
+1329366831757	Rename local variable 'route'
+1329366834810	Rename local variable 'route'
+1329366976737	Rename local variable 'mesage'
+1329367849779	Rename package 'Router'
+1329367871858	Move compilation units
+1329367904925	Delete element
+1329367983201	Move compilation units
+1329367989968	Move compilation units
+1329367992636	Move compilation unit
+1329368004301	Move compilation units
+1329368039007	Move compilation units
+1329368318689	Rename type 'WaitLine'
+1329368386862	Rename type 'TimeEvent'
+1329369169199	Rename type 'LineRouter'
+1329370320025	Move compilation unit
+1329370336312	Move compilation unit
+1329371033231	Rename type 'LinkedList'
+1329372586500	Rename type 'Node'
+1329372695057	Rename type 'Iterator'
+1329378177081	Move compilation unit
+1329378196090	Move compilation units
+1329379918972	Rename type 'WaitLine'

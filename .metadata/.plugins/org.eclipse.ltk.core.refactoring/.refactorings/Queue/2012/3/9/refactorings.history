@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;edu.giocc.util.ListQueue&apos; to &apos;QueueList&apos;&#x0A;- Original project: &apos;Queue&apos;&#x0A;- Original element: &apos;edu.giocc.util.ListQueue&apos;&#x0A;- Renamed element: &apos;edu.giocc.util.QueueList&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;ListQueue&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/&lt;edu.giocc.util{ListQueue.java[ListQueue" matchStrategy="1" name="QueueList" qualified="false" references="true" similarDeclarations="false" stamp="1330667497175" textual="false" version="1.0"/>
+</session>

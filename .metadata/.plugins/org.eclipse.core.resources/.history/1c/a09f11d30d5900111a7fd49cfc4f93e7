@@ -1,0 +1,33 @@
+package edu.giocc.lang;
+
+import static org.junit.Assert.*;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+import edu.giocc.util.DoublyLinkedList;
+
+public class DoublyLinkedListTests {
+	private DoublyLinkedList<Integer> list;
+	
+	@Before
+	public void setUp() throws Exception {
+		list = new DoublyLinkedList<Integer>();
+	}
+
+	@After
+	public void tearDown() throws Exception {
+		list.clear();
+	}
+
+	@Test
+	public void canUseFirst() {
+		list.addFirst(11);
+		assertEquals(11, list.getFirst().intValue());
+		assertEquals(1, list.size());
+		
+		list.removeFirst();
+	}
+
+}

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;edu.giocc.util.router.Content&apos; to &apos;Message&apos;&#x0A;- Original project: &apos;Router&apos;&#x0A;- Original element: &apos;edu.giocc.util.router.Content&apos;&#x0A;- Renamed element: &apos;edu.giocc.util.router.Message&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;Content&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/&lt;edu.giocc.util.router{Content.java[Content" matchStrategy="1" name="Message" qualified="false" references="true" similarDeclarations="false" stamp="1334610005157" textual="false" version="1.0"/>
+</session>

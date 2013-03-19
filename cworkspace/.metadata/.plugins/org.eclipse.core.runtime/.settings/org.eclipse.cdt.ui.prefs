@@ -1,0 +1,6 @@
+#Mon Apr 23 03:36:59 PDT 2012
+spelling_locale_initialized=true
+useAnnotationsPrefPage=true
+eclipse.preferences.version=1
+useQuickDiffPrefPage=true
+org.eclipse.cdt.ui.text.custom_code_templates=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><templates><template autoinsert\="false" context\="org.eclipse.cdt.ui.text.codetemplates.filecomment_context" deleted\="false" description\="Comment for created C/C++ files" enabled\="true" id\="org.eclipse.cdt.ui.text.codetemplates.filecomment" name\="filecomment">/*\n * ${file_name}\n * @author Gio Borje\n */</template></templates>

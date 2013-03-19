@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path=""/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/HeapPriorityQueue"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Heap"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Collection"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Router"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/EventDispatcher"/>
+	<classpathentry kind="output" path=""/>
+</classpath>

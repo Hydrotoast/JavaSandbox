@@ -1,0 +1,5 @@
+import edu.giocc.util.router.Channel;
+
+public interface Handler<E> extends Channel<E> {
+	public void handle(E e);
+}

@@ -1,0 +1,110 @@
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Map;
+
+public class Heap<V> implements PriorityQueue<V> {
+	private static class Entry<V> {
+		private Comparable<V> key;
+		private V value;
+
+		public Entry(Comparable<V> key, V value) {
+			this.key = key;
+			this.value = value;
+		}
+
+		public Comparable<V> getKey() {
+			return key;
+		}
+
+		public V getValue() {
+			return value;
+		}
+	}
+
+	public Map<Comparable<V>, V> entries;
+	public Comparator<Entry<V>> comparator;
+
+	public Heap() {
+		entries = new HashMap<Comparable<V>, V>();
+		comparator = new Comparator<Entry<V>>() {
+			@SuppressWarnings("unchecked")
+			@Override
+			public int compare(Entry<V> o1, Entry<V> o2) {
+				return o1.getKey().compareTo((V) o2.getKey());
+			}
+		};
+	}
+
+	public Heap(Comparator<Entry<V>> comparator) {
+		entries = new ArrayList<Entry<V>>();
+		this.comparator = comparator;
+	}
+
+	private void swapEntries(Comparable<V> op1, Comparable<V> op2) {
+		Entry<K, V> swap = entries.get(index);
+		entries.set(op1, entries.get(op2));
+		entries.set(op2, swap);
+	}
+
+	// Max nodes float down from right to left
+	private void minHeapify(int i) {
+		int left = 2 * i;
+		int right = 2 * i + 1;
+		int smallest;
+
+		if (right <= entries.size()
+				&& comparator.compare(entries.get(right), entries.get(i)) < 0)
+			smallest = right;
+		else if (left <= entries.size()
+				&& comparator.compare(entries.get(left), entries.get(i)) < 0)
+			smallest = left;
+		else
+			smallest = i;
+
+		if (smallest != i) {
+			swapEntries(i, smallest);
+			minHeapify(smallest);
+		}
+	}
+
+	// Min nodes float up
+	private void decreaseKey(Comparable<V> i, Comparable<V> key) {
+		assert key.compareTo(i);
+		int parent = (int) Math.floor(i / 2);
+
+		i = key;
+		while (i > 1 && parent < i) {
+			swapEntries(i, parent);
+			i = parent;
+		}
+	}
+
+	@Override
+	public boolean isEmpty() {
+		return entries.isEmpty();
+	}
+
+	@Override
+	public int size() {
+		return entries.size();
+	}
+
+	@Override
+	public V min() {
+		return entries.get(1).getValue();
+	}
+
+	@Override
+	public void removeMin() {
+		entries.set(1, entries.get(entries.size()));
+		entries.remove(entries.size());
+		minHeapify(1);
+	}
+
+	@Override
+	public void insert(Comparable<V> key, V value) {
+		entries.add(new Entry<V>(key, value));
+		decreaseKey(entries.get(arg0), key);
+	}
+}

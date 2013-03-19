@@ -1,0 +1,29 @@
+package devs;
+
+import java.util.Comparator;
+
+public abstract class PriorityQueue<K, V> {
+	protected static class Entry<K, V> {
+		public K key;
+		public V value;
+		
+		public Entry(K key, V value) {
+			this.key = key;
+			this.value = value;
+		}
+	}
+	
+	protected NodePositionList<Entry<K, V>>
+	protected Comparator<Entry<K, V>> comparator;
+	protected int count;
+
+	abstract boolean isEmpty();
+
+	abstract int size();
+
+	abstract void insert();
+
+	abstract E min();
+
+	abstract void removeMin();
+}

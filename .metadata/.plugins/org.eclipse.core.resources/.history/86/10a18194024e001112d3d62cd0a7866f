@@ -1,0 +1,30 @@
+package devs;
+
+import java.util.Comparator;
+import java.util.LinkedList;
+
+public abstract class PriorityQueue<K, V> {
+	protected static class Entry<K, V> {
+		public K key;
+		public V value;
+		
+		public Entry(K key, V value) {
+			this.key = key;
+			this.value = value;
+		}
+	}
+	
+	protected LinkedList<Entry<K, V>> entries;
+	protected Comparator<K> comparator;
+	protected int count;
+
+	abstract boolean isEmpty();
+
+	abstract int size();
+
+	abstract void insert();
+
+	abstract E min();
+
+	abstract void removeMin();
+}

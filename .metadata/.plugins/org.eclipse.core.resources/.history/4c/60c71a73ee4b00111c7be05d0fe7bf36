@@ -1,0 +1,11 @@
+package devs;
+
+public class TheaterWindow implements Observer {
+
+	@Override
+	public void update(Observable s) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+}

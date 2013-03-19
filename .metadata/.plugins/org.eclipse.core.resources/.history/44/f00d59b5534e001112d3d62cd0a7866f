@@ -1,0 +1,43 @@
+package devs;
+
+import java.util.ArrayList;
+
+public class Heap<E> implements PriorityQueue<E> {
+	private ArrayList<Comparable<E>> heap;
+	private int size;
+
+	public Heap() {
+		heap = new ArrayList<Comparable<E>>();
+		size = 0;
+	}
+	
+	@Override
+	public boolean isEmpty() {
+		return size == 0;
+	}
+
+	@Override
+	public int size() {
+		return size;
+	}
+
+	@Override
+	public Comparable<E> min() {
+		return heap.get(1);
+	}
+
+	@Override
+	public void insert(Comparable<E> entry) {
+		if (size == heap.length) {
+			Comparable<E>[] newHeap = new Comparable<E>[2 * heap.length];
+			System.arraycopy(heap, 0, newHeap, 0, heap.length);
+			heap = newHeap;
+		}
+	}
+
+	@Override
+	public void removeMin() {
+		
+	}
+
+}

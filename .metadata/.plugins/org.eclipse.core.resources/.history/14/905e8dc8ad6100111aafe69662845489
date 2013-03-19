@@ -1,0 +1,5 @@
+import edu.giocc.router.DynamicRouter;
+
+public class EventDispatcher<E> extends DynamicRouter<Content> {
+
+}

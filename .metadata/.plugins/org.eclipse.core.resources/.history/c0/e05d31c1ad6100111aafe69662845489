@@ -1,0 +1,3 @@
+public class EventDispatcher<E> extends DynamicRouter<E> {
+
+}

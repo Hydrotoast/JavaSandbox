@@ -1,0 +1,11 @@
+package devs;
+
+import java.util.Comparator;
+
+public class DefaultComparator implements Comparator<E> {
+
+	@Override
+	public int compare(E op1, E op2) {
+		return op1.compareTo(op2);
+	}
+}

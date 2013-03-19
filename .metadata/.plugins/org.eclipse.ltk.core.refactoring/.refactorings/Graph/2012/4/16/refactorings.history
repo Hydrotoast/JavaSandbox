@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename field &apos;sets&apos; in &apos;edu.giocc.Graph.DisjointSet&apos; to &apos;forest&apos;&#x0A;- Original project: &apos;Graph&apos;&#x0A;- Original element: &apos;edu.giocc.Graph.DisjointSet.sets&apos;&#x0A;- Renamed element: &apos;edu.giocc.Graph.DisjointSet.forest&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" delegate="false" deprecate="false" description="Rename field &apos;sets&apos;" flags="589830" getter="false" id="org.eclipse.jdt.ui.rename.field" input="/&lt;edu.giocc.Graph{DisjointSet.java[DisjointSet^sets" name="forest" references="true" setter="false" stamp="1334521081005" textual="false" version="1.0"/>
+</session>

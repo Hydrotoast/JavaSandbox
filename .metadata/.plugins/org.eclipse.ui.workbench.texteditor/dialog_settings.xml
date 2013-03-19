@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item value="314" key="DIALOG_WIDTH"/>
+		<item value="140" key="DIALOG_Y_ORIGIN"/>
+		<item value="445" key="DIALOG_HEIGHT"/>
+		<item value="893" key="DIALOG_X_ORIGIN"/>
+		<item value="1|Droid Sans|11.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item value="true" key="wrap"/>
+		<item value="false" key="isRegEx"/>
+		<item value="false" key="casesensitive"/>
+		<item value="false" key="incremental"/>
+		<item value="false" key="wholeword"/>
+		<item value="exit" key="selection"/>
+		<list key="findhistory">
+			<item value="exit"/>
+			<item value="EventQueue"/>
+			<item value="received"/>
+			<item value="broadcast"/>
+			<item value="get("/>
+			<item value="BFS"/>
+			<item value="&amp;gt;"/>
+			<item value="&amp;lt;"/>
+		</list>
+		<list key="replacehistory">
+			<item value="&gt;"/>
+			<item value="&lt;"/>
+			<item value="BINARYOP"/>
+			<item value="protected"/>
+			<item value="mockList"/>
+			<item value="data"/>
+			<item value="QueueChannel"/>
+			<item value="Channel"/>
+		</list>
+	</section>
+	<section name="org.eclipse.ui.texteditor.GotoLineAction$GotoLineDialog_dialogBounds">
+		<item value="384" key="DIALOG_Y_ORIGIN"/>
+		<item value="568" key="DIALOG_X_ORIGIN"/>
+	</section>
+</section>

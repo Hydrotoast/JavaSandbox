@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename method &apos;entities.LogicalProcess.disengange()&apos; to &apos;disengage&apos;&#x0A;- Original project: &apos;DiscreteSimulation&apos;&#x0A;- Original element: &apos;entities.LogicalProcess.disengange()&apos;&#x0A;- Renamed element: &apos;entities.LogicalProcess.disengage()&apos;&#x0A;- Update references to refactored element" delegate="false" deprecate="false" description="Rename method &apos;disengange&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.method" input="/&lt;entities{LogicalProcess.java[LogicalProcess~disengange" name="disengage" references="true" stamp="1330402758285" version="1.0"/>
+</session>

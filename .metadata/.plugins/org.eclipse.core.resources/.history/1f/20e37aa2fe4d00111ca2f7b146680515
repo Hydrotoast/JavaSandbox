@@ -1,0 +1,15 @@
+package devs;
+
+import java.util.Comparator;
+
+public abstract class PriorityQueue<E> {
+	protected Comparator<E> comparator;
+	protected int count;
+	
+	abstract boolean isEmpty();
+	abstract int size();
+	
+	abstract void insert();
+	abstract E min();
+	abstract void removeMin();
+}

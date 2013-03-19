@@ -1,0 +1,164 @@
+package edu.giocc.util.SkipList;
+
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.NoSuchElementException;
+import java.util.Random;
+
+import edu.giocc.util.Collection;
+
+public class SkipList<K, V> implements Collection<K> {
+	private class SkipListNode {
+		public K key;
+		public V value;
+		public ArrayList<SkipListNode> forward;
+
+		public SkipListNode(K key, V value) {
+			this.key = key;
+			this.value = value;
+			forward = new ArrayList<SkipListNode>();
+			forward.ensureCapacity(maxRank);
+		}
+	}
+
+	private Comparator<K> comparator;
+	private Random randomGen;
+
+	private SkipListNode head;
+
+	private int maxRank;
+	private int count;
+
+	public SkipList(Comparator<K> comparator) {
+		this.comparator = comparator;
+		this.randomGen = new Random(System.currentTimeMillis());
+
+		head = new SkipListNode(null, null);
+		count = 0;
+		maxRank = 1;
+	}
+
+	@Override
+	public boolean isEmpty() {
+		return count == 0;
+	}
+
+	@Override
+	public int size() {
+		return count;
+	}
+
+	@Override
+	public void clear() {
+		head.forward = new ArrayList<SkipListNode>();
+	}
+
+	public void insert(K key, V value) {
+		SkipListNode node = new SkipListNode(key, value);
+		ArrayList<SkipListNode> updates = buildUpdates(node);
+		int rank = randRank();
+
+		if (rank > maxRank) {
+			increaseRank(rank, updates);
+			node.forward.ensureCapacity(rank);
+		}
+
+		for (int i = 0; i < maxRank; i++) {
+			try {
+				node.forward.add(i, updates.get(i).forward.get(i));
+			} catch (IndexOutOfBoundsException e) {
+				node.forward.add(i, null);
+			}
+
+			System.out.println("Max Rank: " + maxRank);
+			System.out.println("Current Rank: " + i);
+			System.out.println("Updates Size: " + updates.size());
+			SkipListNode update = updates.get(i);
+			update.forward.add(i, node);
+		}
+
+		count++;
+	}
+
+	public V get(K k) {
+		if (isEmpty())
+			throw new NoSuchElementException();
+
+		SkipListNode cursor = head;
+		for (int i = maxRank - 1; i >= 0; i--) {
+			try {
+				System.out.println(i);
+				while (cursor.forward.get(i) != null
+						&& comparator.compare(cursor.forward.get(i).key, k) == 1)
+					cursor = cursor.forward.get(i);
+			} catch (IndexOutOfBoundsException e) {
+			}
+		}
+
+		return cursor.forward.get(0).value;
+	}
+
+	public void remove(K k) {
+		if (isEmpty())
+			throw new NoSuchElementException();
+
+		SkipListNode cursor = head;
+		for (int i = maxRank - 1; i >= 0; i--) {
+			try {
+				System.out.println(i);
+				while (cursor.forward.get(i) != null
+						&& comparator.compare(cursor.forward.get(i).key, k) == 1)
+					cursor = cursor.forward.get(i);
+			} catch (IndexOutOfBoundsException e) {
+			}
+		}
+
+		if (comparator.compare(cursor.forward.get(0).key, k) != 0)
+			throw new NoSuchElementException();
+
+		for (int i = 0; i < cursor.forward.size(); i++) {
+			try {
+				cursor.forward.get(i).forward.set(i, cursor);
+			} catch (NoSuchElementException ex) {
+			}
+			cursor.forward.set(i, cursor.forward.get(i).forward.get(i));
+		}
+
+		count--;
+	}
+
+	private ArrayList<SkipListNode> buildUpdates(SkipListNode node) {
+		ArrayList<SkipListNode> updates = new ArrayList<SkipListNode>();
+
+		SkipListNode cursor = head;
+		for (int i = maxRank; i >= 0; i--) {
+			try {
+				while (cursor.forward.get(i) != null
+						&& comparator.compare(cursor.forward.get(i).key,
+								node.key) == 1)
+					cursor = cursor.forward.get(i);
+				updates.add(cursor);
+			} catch (IndexOutOfBoundsException e) {
+				updates.add(cursor);
+			}
+		}
+
+		return updates;
+	}
+
+	private int randRank() {
+		int rank = 1;
+		while (randomGen.nextBoolean())
+			rank++;
+		return rank;
+	}
+
+	private void increaseRank(int rank, ArrayList<SkipListNode> updates) {
+		assert updates.size() < rank;
+		for (int i = maxRank + 1; i < rank; i++)
+			updates.add(i, head);
+
+		assert updates.size() == rank;
+		maxRank = rank;
+	}
+}

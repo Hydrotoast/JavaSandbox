@@ -1,0 +1,28 @@
+public class Heap<E> {
+	private static class Position<E> {
+		private int key;
+		private E data;
+		
+		public Position(int key, E data) {
+			this.key = key;
+			this.data = data;
+		}
+		
+		public int getKey() {
+			return key;
+		}
+		
+		public E getData() {
+			return data;
+		}
+	}
+	
+	private Comparable entries;
+	
+	public Heap() {
+	}
+	
+	public maxHeapify() {
+		
+	}
+}

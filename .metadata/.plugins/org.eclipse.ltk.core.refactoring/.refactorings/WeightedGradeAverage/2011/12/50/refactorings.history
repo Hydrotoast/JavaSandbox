@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;WeightedGradeAverage/src/input&apos; to &apos;input.dat&apos;" description="Rename resource &apos;input&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/input" name="input.dat" stamp="1322996885279" updateReferences="true"/>
+</session>

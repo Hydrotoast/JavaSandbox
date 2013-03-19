@@ -1,0 +1,16 @@
+1330384821914	Rename type 'EventRouter'
+1330386060021	Rename type 'ContentRouter'
+1330386340616	Rename type 'Rule'
+1330390460063	Rename type 'ContentBasedRouter'
+1330391357237	Rename method 'getRule'
+1330391507567	Rename type 'Point'
+1330393236807	Rename type 'EventDispatcher'
+1330394248302	Delete element
+1330394591096	Rename type 'Channel'
+1330395870485	Extract local variable 'channel'
+1330396726336	Delete element
+1330398556168	Copy compilation units
+1330401246185	Copy compilation unit
+1330401525360	Delete element
+1330401683633	Move compilation units
+1330401869854	Rename type 'LeastCongestedRouter'

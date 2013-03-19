@@ -1,0 +1,52 @@
+/*
+ * MetricPolicy.cpp
+ * @author Gio Borje
+ */
+
+#include "MetricPolicy.h"
+
+template<typename T>
+T norm_1(T u, T v) {
+	return abs(u - v);
+}
+
+Power::Power(int exp) :
+	exp_(exp) {
+}
+int Power::operator()(int u) {
+	return static_cast<int> (pow(static_cast<double> (u), Power::exp_));
+}
+
+Vertex operator-(Vertex const& a, Vertex const& b) {
+	Vertex result;
+	transform(a.begin(), a.end(), b.begin(), back_inserter(result), norm_1<int> );
+	return result;
+}
+
+Vertex pow(Vertex const& a, int exp) {
+	Vertex result;
+	Power pow(exp);
+	transform(a.begin(), a.end(), back_inserter(result), pow);
+	return result;
+}
+
+template<class Derived>
+static bool Metric::identical(Vertex a, Vertex b) {
+	return Derived::distance(a, b) == 0;
+}
+
+static int EuclidMetric::distance(Vertex const& a, Vertex const& b) {
+	Vertex result = pow(a - b, 2);
+	return static_cast<int> (sqrt(static_cast<double> (accumulate(
+			result.begin(), result.end(), 0))));
+}
+
+static int TaxicabMetric::distance(Vertex const& a, Vertex const& b) {
+	Vertex result = a - b;
+	return static_cast<int> (accumulate(result.begin(), result.end(), 0));
+}
+
+static int ChessMetric::distance(Vertex const& a, Vertex const& b) {
+	Vertex result = a - b;
+	return static_cast<int> (*max_element(result.begin(), result.end()));
+}

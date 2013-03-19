@@ -1,0 +1,13 @@
+package devs;
+
+import java.util.Comparator;
+import java.util.LinkedList;
+
+public interface PriorityQueue<K, V> {
+	abstract boolean isEmpty();
+	abstract int size();
+	abstract E min();
+
+	abstract void insert();
+	abstract void removeMin();
+}

@@ -1,0 +1,12 @@
+package devs;
+
+public abstract class PriorityQueue<E> {
+	protected int count;
+	
+	abstract boolean isEmpty();
+	abstract int size();
+	
+	abstract void insert();
+	abstract E min();
+	abstract void removeMin();
+}

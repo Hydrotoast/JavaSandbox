@@ -1,0 +1,30 @@
+package entities;
+import java.util.LinkedList;
+import java.util.NoSuchElementException;
+import java.util.Queue;
+
+public abstract class EntityManager implements EagerResourcePool<Reusable> {
+	protected Queue<Reusable> availableResources;
+
+	protected EntityManager() {
+		availableResources = new LinkedList<Reusable>();
+		preloadResources();
+	}
+
+	@Override
+	public Reusable acquireResource() throws EmptyPoolException {
+		try {
+			Reusable data = availableResources.remove();
+			return data;
+		} catch (NoSuchElementException ex) {
+			throw new EmptyPoolException();
+		}
+	}
+
+	@Override
+	public void releaseResource(Reusable resource) {
+		availableResources.add(resource);
+	}
+
+	protected abstract void preloadResources();
+}

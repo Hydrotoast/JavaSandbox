@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;edu.giocc.util.ListStack&apos; to &apos;StackList&apos;&#x0A;- Original project: &apos;Stack&apos;&#x0A;- Original element: &apos;edu.giocc.util.ListStack&apos;&#x0A;- Renamed element: &apos;edu.giocc.util.StackList&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;ListStack&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/&lt;edu.giocc.util{ListStack.java[ListStack" matchStrategy="1" name="StackList" qualified="false" references="true" similarDeclarations="false" stamp="1330667488245" textual="false" version="1.0"/>
+</session>

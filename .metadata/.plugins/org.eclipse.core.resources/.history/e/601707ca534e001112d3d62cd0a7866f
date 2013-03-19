@@ -1,0 +1,45 @@
+package devs;
+
+import java.util.ArrayList;
+
+import javax.swing.text.html.HTMLDocument.Iterator;
+
+public class Heap<E> implements PriorityQueue<E> {
+	private ArrayList<Comparable<E>> heap;
+	private int size;
+
+	public Heap() {
+		heap = new ArrayList<Comparable<E>>();
+		size = 0;
+	}
+	
+	@Override
+	public boolean isEmpty() {
+		return size == 0;
+	}
+
+	@Override
+	public int size() {
+		return size;
+	}
+
+	@Override
+	public Comparable<E> min() {
+		return heap.get(1);
+	}
+
+	@Override
+	public void insert(Comparable<E> entry) {		
+		ArrayListIterator iter = heap.iterator();
+		Comparable<E> match = iter.next();
+		while (entry.compareTo(match) > 0);
+			match = iter.next();
+		
+	}
+
+	@Override
+	public void removeMin() {
+		
+	}
+
+}

@@ -1,0 +1,9 @@
+!SESSION 2012-04-23 03:24:41.889 -----------------------------------------------
+eclipse.buildId=I20110613-1736
+java.version=1.6.0_23
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Command-line arguments:  -os linux -ws gtk -arch x86_64
+
+!ENTRY org.eclipse.cdt.core 1 0 2012-04-23 03:30:23.872
+!MESSAGE Indexed 'EdgeGen' (0 sources, 76 headers) in 1.81 sec: 2,143 declarations; 2,311 references; 0 unresolved inclusions; 0 syntax errors; 0 unresolved names (0.00%)

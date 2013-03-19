@@ -1,0 +1,19 @@
+public class Heap {
+	private static class Position<E> {
+		private int key;
+		private E data;
+		
+		public Position(int key, E data) {
+			this.key = key;
+			this.data = data;
+		}
+		
+		public int getKey() {
+			return key;
+		}
+		
+		public E getData() {
+			return data;
+		}
+	}
+}

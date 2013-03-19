@@ -1,0 +1,4 @@
+
+public class ConcreteProducer implements Producer<T> {
+
+}

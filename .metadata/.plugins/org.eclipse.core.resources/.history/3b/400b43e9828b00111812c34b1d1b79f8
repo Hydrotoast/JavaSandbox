@@ -1,0 +1,7 @@
+package edu.giocc.EventMachine;
+
+import edu.giocc.router.EventDispatcher.Event;
+
+public class ChatEvent extends Event {
+
+}

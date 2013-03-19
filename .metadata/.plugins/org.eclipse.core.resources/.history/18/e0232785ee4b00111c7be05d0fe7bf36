@@ -1,0 +1,7 @@
+package devs;
+
+public interface Observable {
+	public abstract void addObserver(Observer s);
+	public abstract void removeObserver(Observer s);
+	public abstract void notifyObservers();
+}

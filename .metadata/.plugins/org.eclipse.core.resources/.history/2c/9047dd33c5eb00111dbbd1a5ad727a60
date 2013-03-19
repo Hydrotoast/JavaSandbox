@@ -1,0 +1,18 @@
+package edu.giocc.problems;
+
+public class CapitalBudgeting {
+	private static class Opportunity {
+		public int cost;
+		public int value;
+		
+		public Opportunity(int cost, int value) {
+			this.cost = cost;
+			this.value = value;
+		}
+	}
+
+	public static void main(String[] args) {
+		Opportunity[] opportunities = new Opportunity[4];
+		opportunities[0] = new Opportunity(5000, 8000);
+	}
+}

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;SinglyLinkedList.java&apos; to &apos;DiscreteSimulation/util&apos;&#x0A;- Original project: &apos;LinkedList&apos;&#x0A;- Destination element: &apos;DiscreteSimulation/util&apos;&#x0A;- Original element: &apos;edu.giocc.util.SinglyLinkedList.java&apos;" description="Copy compilation unit" destination="=DiscreteSimulation/&lt;util" element1="/&lt;edu.giocc.util{SinglyLinkedList.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1330483713861" units="1" version="1.0"/>
+</session>

@@ -1,0 +1,28 @@
+package devs;
+
+public interface PriorityQueue<K, V> {
+	public static class Entry<K, V> {
+		private K key;
+		private V value;
+		
+		public Entry(K key, V value) {
+			this.key = key;
+			this.value = value;
+		}
+		
+		public K getKey() {
+			return key;
+		}
+		
+		public V getValue() {
+			return value;
+		}
+	}
+	
+	abstract boolean isEmpty();
+	abstract int size();
+	abstract Entry<K, V> min();
+
+	abstract void insert();
+	abstract void removeMin();
+}

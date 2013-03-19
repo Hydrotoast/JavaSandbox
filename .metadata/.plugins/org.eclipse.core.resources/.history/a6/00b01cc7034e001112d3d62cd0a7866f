@@ -1,0 +1,49 @@
+package devs;
+
+import java.util.LinkedList;
+
+
+public class SortedPriorityQueue<K, V> implements PriorityQueue<K, V> {
+	public LinkedList<Entry<K, V>> entries;
+	public Comprator<E> comparator;
+	
+	public SortedPriorityQueue() {
+		entries = new LinkedList<Entry<K, V>>();
+		comparator = new DefaultComparator();
+	}
+
+	public SortedPriorityQueue(Comparator<E> comparator) {
+		this.comparator = comparator;
+	}
+
+	
+	@Override
+	public boolean isEmpty() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public int size() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public devs.PriorityQueue.Entry<K, V> min() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void insert() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void removeMin() {
+		// TODO Auto-generated method stub
+
+	}
+}

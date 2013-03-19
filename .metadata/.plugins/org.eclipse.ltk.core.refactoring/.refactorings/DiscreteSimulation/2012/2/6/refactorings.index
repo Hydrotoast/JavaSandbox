@@ -1,0 +1,40 @@
+1328473930848	Rename type 'Event'
+1328473939942	Encapsulate field 'time'
+1328474173094	Rename local variable 'arg1'
+1328474178361	Rename local variable 'arg0'
+1328474181412	Rename local variable 'other'
+1328475290960	Rename type 'TimeEvent'
+1328476109603	Delete element
+1328476613856	Copy compilation unit
+1328478438426	Rename local variable 'largest'
+1328612490129	Delete element
+1328612576690	Rename type 'DepartureEvt'
+1328612581987	Rename type 'ArrivalEvt'
+1328612774984	Rename type 'TimeEvt'
+1328615899134	Rename type 'EventDispatcher'
+1328615989891	Rename local variable 'dispatcher'
+1328615995799	Rename local variable 'dispatcher'
+1328672481366	Move compilation units
+1328672509947	Move compilation units
+1328672571946	Move compilation units
+1328674969076	Copy compilation units
+1328674993459	Move compilation units
+1328675008978	Move compilation unit
+1328675016493	Copy compilation units
+1328675104062	Move compilation unit
+1328690623457	Copy compilation unit
+1328693220245	Rename type 'Entity'
+1328693421724	Rename local variable 'lp'
+1328698495822	Delete element
+1328759623088	Copy compilation units
+1328760364308	Delete element
+1328761105402	Delete element
+1328761628787	Rename type 'EntityManager'
+1328762250759	Move compilation unit
+1328763067344	Delete element
+1328763096220	Delete element
+1328763330812	Infer generic type arguments
+1328782256523	Copy compilation units
+1328782843326	Delete element
+1328809749705	Rename type 'EventRouter'
+1328809772507	Rename type variable 'E'

@@ -1,0 +1,5 @@
+package devs;
+
+public interface Observable {
+	public abstract void notifyObservers();
+}

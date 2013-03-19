@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename local variable &apos;message&apos; in &apos;edu.giocc.EventMachine.ChatAIEventMachine.main(...).new Handler() {...}.dispatch(...)&apos; to &apos;content&apos;&#x0A;- Original project: &apos;EventMachine&apos;&#x0A;- Original element: &apos;edu.giocc.EventMachine.ChatAIEventMachine.main(...).new Handler() {...}.dispatch(Event).message&apos;&#x0A;- Renamed element: &apos;message&apos;&#x0A;- Update references to refactored element" description="Rename local variable &apos;message&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/&lt;edu.giocc.EventMachine{ChatAIEventMachine.java[ChatAIEventMachine~main~\[QString;[!3~dispatch~QEvent;@message!3166!3204!3178!3184!QUserMessage;!0!false" name="content" references="true" stamp="1338945744002" version="1.0"/>
+</session>

@@ -1,0 +1,262 @@
+package edu.giocc.util.SkipList;
+
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.NoSuchElementException;
+import java.util.Random;
+
+import edu.giocc.util.Collection;
+
+/**
+ * Skip List is a probabilistic data structure that act as an alternative for
+ * balanced search trees. Effectively, insertion, removal and retrieval have a
+ * worst-case, logarithmic cost.
+ * 
+ * @author Gio Carlo Cielo
+ * 
+ * @param <K> the type of the keys contained by this list.
+ * @param <V> the type of the values contained by this list.
+ */
+public class SkipList<K, V> implements Collection<K> {
+	/**
+	 * Skip List Node contains the data necessary for skip list interactions
+	 * including the key value and all forward pointers.
+	 * 
+	 * @author Gio Carlo Cielo
+	 */
+	private class SkipListNode {
+		public K key;
+		public V value;
+		public ArrayList<SkipListNode> forward;
+
+		public SkipListNode(K key, V value) {
+			this.key = key;
+			this.value = value;
+			forward = new ArrayList<SkipListNode>();
+			forward.ensureCapacity(maxRank);
+		}
+
+		@Override
+		public String toString() {
+			if (key == null || value == null)
+				return "{[]}";
+
+			return "{" + this.key.toString() + ": " + this.value.toString()
+					+ "}";
+		}
+	}
+
+	/**
+	 * Totally orders all nodes in this list.
+	 */
+	private Comparator<K> comparator;
+
+	/**
+	 * Generates random numbers for the probability distribution.
+	 */
+	private Random randomGen;
+
+	/**
+	 * Maintains the probablistic ratio of the list structure.
+	 */
+	private int probDistro;
+
+	/**
+	 * Defines the head of all lists.
+	 */
+	private SkipListNode header;
+
+	/**
+	 * Maintains the current, maximum rank of this list.
+	 */
+	private int maxRank;
+
+	/**
+	 * Maintains the number of elements contained by this list.
+	 */
+	private int count;
+
+	/**
+	 * Constructor with only a comparator.
+	 * 
+	 * @param comparator the comparator for comparisons.
+	 */
+	public SkipList(Comparator<K> comparator) {
+		this.comparator = comparator;
+		this.randomGen = new Random(System.currentTimeMillis());
+		probDistro = 4;
+
+		header = new SkipListNode(null, null);
+		header.forward.add(new SkipListNode(null, null));
+
+		count = 0;
+		maxRank = 1;
+	}
+
+	/**
+	 * Constructor with a comparator and probability distribution.
+	 * 
+	 * @param comparator the comparator for comparisons.
+	 * @param probDistro the divisor for the probability distribution fraction.
+	 */
+	public SkipList(Comparator<K> comparator, int probDistro) {
+		this.comparator = comparator;
+		this.randomGen = new Random(System.currentTimeMillis());
+		this.probDistro = probDistro;
+
+		header = new SkipListNode(null, null);
+		header.forward.add(new SkipListNode(null, null));
+
+		count = 0;
+		maxRank = 1;
+	}
+
+	@Override
+	public boolean isEmpty() {
+		return count == 0;
+	}
+
+	@Override
+	public int size() {
+		return count;
+	}
+
+	@Override
+	public void clear() {
+		header.forward = new ArrayList<SkipListNode>();
+		header.forward.add(new SkipListNode(null, null));
+
+		maxRank = 1;
+	}
+
+	/**
+	 * Inserts a new node with the specified key and value into the skip list.
+	 * 
+	 * @param key the key to add.
+	 * @param value the value to add.
+	 */
+	public void insert(K key, V value) {
+		SkipListNode node = new SkipListNode(key, value);
+		ArrayList<SkipListNode> updates = buildUpdates(node);
+		int rank = randRank();
+
+		// Invariant: maxRank > all ranks
+		if (rank > maxRank)
+			increaseRank(rank, updates);
+
+		SkipListNode update;
+		for (int i = 0; i < maxRank; i++) {
+			update = updates.get(i);
+
+			// Invariant: forward rank >= current height
+			if (update.forward.size() > i)
+				node.forward.add(update.forward.get(i));
+
+			update.forward.add(i, node);
+		}
+
+		count++;
+	}
+
+	/**
+	 * Returns a value with the specified key.
+	 * 
+	 * @param k the key associated with the value.
+	 * @return the value associated with the key.
+	 */
+	public V get(K k) {
+		if (isEmpty())
+			throw new NoSuchElementException();
+
+		return getPrevNode(k).forward.get(0).value;
+	}
+
+	/**
+	 * Removes the node with the specified key from this list.
+	 * 
+	 * @param k the key for the node to remove.
+	 */
+	public void remove(K k) {
+		if (isEmpty())
+			throw new NoSuchElementException();
+
+		ArrayList<SkipListNode> updates = buildUpdates(new SkipListNode(k, null));
+		SkipListNode cursor = getPrevNode(k);
+
+		if (comparator.compare(cursor.forward.get(0).key, k) != 0)
+			throw new NoSuchElementException();
+
+		for (int i = 0; i < maxRank; i++)
+			// Invariant: forward size >= i
+			if (updates.get(i).forward.size() > i
+					&& comparator.compare(updates.get(i).forward.get(i).key, k) == 0)
+				updates.get(i).forward.set(i,
+						updates.get(i).forward.get(i).forward.get(i));
+
+		count--;
+	}
+
+	/**
+	 * Returns the node before the node with the specified key.
+	 * 
+	 * @param k the key of the node ahead.
+	 * @return the node before the node with the specified key.
+	 */
+	public SkipListNode getPrevNode(K k) {
+		SkipListNode cursor = header;
+		for (int i = maxRank - 1; i >= 0; i--)
+			// Invariant: forward size >= i
+			while (cursor.forward.size() > i
+					&& comparator.compare(cursor.forward.get(i).key, k) == -1)
+				cursor = cursor.forward.get(i);
+
+		return cursor;
+	}
+
+	/**
+	 * Builds and returns an update vector for the specified node.
+	 * 
+	 * @param node the node to add.
+	 * @return an update vector for the specified node.
+	 */
+	private ArrayList<SkipListNode> buildUpdates(SkipListNode node) {
+		ArrayList<SkipListNode> updates = new ArrayList<SkipListNode>();
+
+		SkipListNode cursor = header;
+		for (int i = maxRank - 1; i >= 0; i--) {
+			// Invariant: forward size >= i
+			while (cursor.forward.size() > i
+					&& comparator.compare(cursor.forward.get(i).key, node.key) != 1)
+				cursor = cursor.forward.get(i);
+			updates.add(cursor);
+		}
+
+		return updates;
+	}
+
+	/**
+	 * Returns a random rank.
+	 * 
+	 * @return a random rank.
+	 */
+	private int randRank() {
+		int rank = 1;
+		while (randomGen.nextInt(probDistro) == 0)
+			rank++;
+
+		return rank;
+	}
+
+	/**
+	 * Increases the maximum rank of this list.
+	 * 
+	 * @param rank the new rank of the list.
+	 * @param updates the update vector to update.
+	 */
+	private void increaseRank(int rank, ArrayList<SkipListNode> updates) {
+		for (int i = maxRank; i < rank; i++)
+			updates.add(i, header);
+
+		this.maxRank = rank;
+	}
+}

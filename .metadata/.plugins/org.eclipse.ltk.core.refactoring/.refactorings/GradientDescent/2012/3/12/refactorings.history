@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename method &apos;Program.f_prime(...)&apos; to &apos;directional_derivative&apos;&#x0A;- Original project: &apos;GradientDescent&apos;&#x0A;- Original element: &apos;Program.f_prime(...)&apos;&#x0A;- Renamed element: &apos;Program.directional_derivative(...)&apos;&#x0A;- Update references to refactored element" delegate="false" deprecate="false" description="Rename method &apos;f_prime&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.method" input="/&lt;{Program.java[Program~f_prime~D" name="directional_derivative" references="true" stamp="1332288221523" version="1.0"/>
+</session>

@@ -1,0 +1,5 @@
+
+public interface EventDispatcher {
+	public void registerHandler(Class<? extends Event> type, Handler handler);
+	public void handle(Event e);
+}

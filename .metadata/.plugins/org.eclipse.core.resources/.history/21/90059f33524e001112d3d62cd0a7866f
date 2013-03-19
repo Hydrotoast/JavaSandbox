@@ -1,0 +1,41 @@
+package devs;
+
+public class Heap implements PriorityQueue<E> {
+	private Comparable[] heap;
+	private int size;
+
+	public Heap() {
+		heap = new Comparable[32];
+		size = 0;
+	}
+	
+	@Override
+	public boolean isEmpty() {
+		return size == 0;
+	}
+
+	@Override
+	public int size() {
+		return size;
+	}
+
+	@Override
+	public E min() {
+		
+	}
+
+	@Override
+	public void insert(Comparable<E> entry) {
+		if (size == heap.length) {
+			Comparable[] newHeap = new Comparable[2 * heap.length];
+			System.arraycopy(heap, 0, newHeap, 0, heap.length);
+			heap = newHeap;
+		}
+	}
+
+	@Override
+	public void removeMin() {
+		
+	}
+
+}

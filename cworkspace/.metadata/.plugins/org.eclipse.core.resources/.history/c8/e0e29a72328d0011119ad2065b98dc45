@@ -1,0 +1,69 @@
+/*
+ * MetricPolicy.h
+ * @author Gio Borje
+ */
+
+#ifndef METRICPOLICY_H_
+#define METRICPOLICY_H_
+
+#include <algorithm>
+#include <iterator>
+#include <cmath>
+#include "Vertex.h"
+
+template <typename T>
+T norm_1(T u, T v) {
+	return abs(u - v);
+};
+
+struct Power {
+	int exp_;
+public:
+	Power(int exp) : exp_(exp) {}
+	int operator()(int u) {
+		return static_cast<int>(pow(static_cast<double>(u), exp_));
+	}
+};
+
+Vertex operator-(Vertex const& a, Vertex const& b) {
+	Vertex result;
+	transform(a.begin(), a.end(), b.begin(), back_inserter(result), norm_1<int>);
+	return result;
+};
+
+Vertex pow(Vertex const& a, int exp) {
+	Vertex result;
+	Power pow(exp);
+	transform(a.begin(), a.end(), back_inserter(result), pow);
+	return result;
+};
+
+template<class Derived>
+struct Metric {
+public:
+	static int distance(Vertex const& a, Vertex const& b);
+	static bool identical(Vertex a, Vertex b) { return Derived::distance(a, b) == 0; }
+};
+
+struct EuclidMetric : public Metric<EuclidMetric> {
+	static int distance(Vertex const& a, Vertex const& b) {
+		Vertex result = pow(a - b, 2);
+		return static_cast<int>(sqrt(static_cast<double>(accumulate(result.begin(), result.end(), 0))));
+	}
+};
+
+struct TaxicabMetric : public Metric<TaxicabMetric> {
+	static int distance(Vertex const& a, Vertex const& b) {
+		Vertex result = a - b;
+		return static_cast<int>(accumulate(result.begin(), result.end(), 0));
+	}
+};
+
+struct ChessMetric : public Metric<ChessMetric> {
+	static int distance(Vertex const& a, Vertex const& b) {
+		Vertex result = a - b;
+		return static_cast<int>(*max_element(result.begin(), result.end()));
+	}
+};
+
+#endif /* METRICPOLICY_H_ */

@@ -1,0 +1,32 @@
+import java.util.ArrayList;
+import java.util.Comparator;
+
+public class Heap<K, V> {
+	private static class Entry<K, V> {
+		private K key;
+		private V value;
+		
+		public Entry(K key, V value) {
+			this.key = key;
+			this.value = value;
+		}
+		
+		public K getKey() {
+			return key;
+		}
+		
+		public V getValue() {
+			return value;
+		}
+	}
+	
+	private ArrayList<Entry<K, V>> entries;
+	private Comparator<K> comparator;
+	
+	public Heap(Comparator<K> comparator) {
+		entries = new ArrayList<Entry<K, V>>();
+		this.omparator = comparator;
+	}
+	
+	
+}

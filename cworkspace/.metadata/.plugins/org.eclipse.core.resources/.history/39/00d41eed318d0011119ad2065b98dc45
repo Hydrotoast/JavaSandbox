@@ -1,0 +1,20 @@
+/*
+ * Edge.h
+ * @author Gio Borje
+ */
+
+#ifndef VERTEX_H_
+#define VERTEX_H_
+
+#include "Vertex.h"
+
+class Edge {
+public:
+	Vertex u;
+	Vertex v;
+	int weight;
+
+	Edge(Vertex const& u, Vertex const& v, int weight);
+};
+
+#endif /* VERTEX_H_ */

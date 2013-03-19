@@ -1,0 +1,167 @@
+package edu.giocc.util.SkipList;
+
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.NoSuchElementException;
+import java.util.Random;
+
+import edu.giocc.util.Collection;
+
+public class SkipListSet<E> implements Collection<E> {
+	private static class SkipNode<E> {
+		public E data;
+		public SkipNode<E> top;
+		public SkipNode<E> right;
+		public SkipNode<E> bottom;
+		public SkipNode<E> left;
+
+		public SkipNode(E data, SkipNode<E> top, SkipNode<E> right,
+				SkipNode<E> bottom, SkipNode<E> left) {
+			this.data = data;
+			this.top = top;
+			this.right = right;
+			this.bottom = bottom;
+			this.left = left;
+		}
+	}
+
+	private Comparator<E> comparator;
+
+	private SkipNode<E> s0;
+	private SkipNode<E> sTop;
+
+	private int count;
+	private int maxRank;
+
+	public SkipListSet(Comparator<E> comparator) {
+		this.comparator = comparator;
+		s0 = new SkipNode<E>(null, null, null, null, null);
+		sTop = new SkipNode<E>(null, null, null, s0, null);
+		s0.top = sTop;
+
+		maxRank = 1;
+		count = 0;
+	}
+
+	@Override
+	public boolean isEmpty() {
+		return count == 0;
+	}
+
+	@Override
+	public int size() {
+		return count;
+	}
+
+	@Override
+	public void clear() {
+		s0.right = null;
+		sTop.right = null;
+		s0.top = sTop;
+	}
+
+	public void insert(E e) {
+		SkipNode<E> node = new SkipNode<E>(e, null, null, null, null);
+		ArrayList<SkipNode<E>> updates = buildUpdatesTable(node);
+
+		int rank = randomRank();
+
+		if (rank > updates.size()) {
+			for (int i = maxRank; i < rank + 1; i++) {
+				updates.add(i, new SkipNode<E>(null, null, null, null, null));
+				linkTopBottom(updates.get(i), updates.get(i - 1));
+			}
+
+			maxRank = rank;
+			sTop = updates.get(maxRank - 1);
+		}
+
+		for (int i = 0; i < rank; i++) {
+				SkipNode<E> topNode = new SkipNode<E>(e, null, null, null, null);
+				linkTopBottom(topNode, node);
+				node = topNode;
+		}
+
+		count++;
+	}
+
+	public boolean contains(E e) {
+		SkipNode<E> cursor = sTop.bottom;
+
+		if (cursor.right == null)
+			return false;
+		else
+			cursor = cursor.right;
+
+		while (cursor != null) {
+			int order = comparator.compare(cursor.data, e);
+			if (order > 0)
+				cursor = cursor.left;
+			cursor = cursor.bottom;
+			if (order < 0)
+				cursor = cursor.right;
+			else
+				return true;
+		}
+
+		return false;
+	}
+
+	public void remove(E e) {
+		if (isEmpty())
+			throw new NoSuchElementException();
+
+		SkipNode<E> cursor = s0.right;
+
+		while (cursor != null) {
+			if (cursor.data.equals(e)) {
+				linkLeftRight(cursor.left, cursor.right);
+				cursor = cursor.top;
+			} else
+				cursor = cursor.right;
+		}
+
+		count--;
+	}
+
+	private void linkTopBottom(SkipNode<E> op1, SkipNode<E> op2) {
+		op1.bottom = op2;
+		if (op2 != null)
+			op2.top = op1;
+	}
+
+	private void linkLeftRight(SkipNode<E> op1, SkipNode<E> op2) {
+		op1.right = op2;
+		if (op2 != null)
+			op2.left = op1;
+	}
+
+	private int randomRank() {
+		int rank = 1;
+		Random randomGen = new Random();
+		while (randomGen.nextBoolean())
+			rank++;
+		return rank;
+	}
+
+	private ArrayList<SkipNode<E>> buildUpdatesTable(SkipNode<E> node) {
+		ArrayList<SkipNode<E>> updates = new ArrayList<SkipNode<E>>();
+
+		SkipNode<E> rankCursor = s0;
+		while (rankCursor != sTop) {
+			updates.add(rankSearch(rankCursor, node.data));
+			rankCursor = rankCursor.top;
+		}
+
+		return updates;
+	}
+
+	private SkipNode<E> rankSearch(SkipNode<E> rankCursor, E e) {
+		SkipNode<E> fileCursor = rankCursor;
+		while (fileCursor.right != null
+				&& comparator.compare(e, fileCursor.data) != -1) {
+			fileCursor = fileCursor.right;
+		}
+		return fileCursor;
+	}
+}

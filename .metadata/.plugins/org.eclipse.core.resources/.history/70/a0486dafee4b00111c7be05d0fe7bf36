@@ -1,0 +1,12 @@
+package devs;
+
+public class CustomerLine implements Observable {
+	private 
+
+	@Override
+	public void notifyObservers() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

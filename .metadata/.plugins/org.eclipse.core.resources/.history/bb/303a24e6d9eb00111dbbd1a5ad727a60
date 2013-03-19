@@ -1,0 +1,38 @@
+package edu.giocc.problems;
+
+import java.util.PriorityQueue;
+
+public class CapitalBudgeting {
+	private static class Opportunity {
+		public int cost;
+		public int value;
+		
+		public Opportunity(int cost, int value) {
+			this.cost = cost;
+			this.value = value;
+		}
+	}
+	
+	// 0-1 Programming problem
+	public static int maxRevenue(Opportunity[] opportunities, int maxInvestment) {
+		PriorityQueue<Integer> pq = new PriorityQueue<Integer>();
+		int revenue = 0;
+		
+		while (!pq.isEmpty()) {
+			
+		}
+		
+		return revenue;
+	}
+
+	public static void main(String[] args) {
+		// 5x + 7y +4z + 3i <= 14
+		Opportunity[] opportunities = new Opportunity[4];
+		opportunities[0] = new Opportunity(5000, 8000);
+		opportunities[0] = new Opportunity(7000, 11000);
+		opportunities[0] = new Opportunity(4000, 6000);
+		opportunities[0] = new Opportunity(3000, 4000);
+		
+		System.out.println(maxRevenue(opportunities, 14000));
+	}
+}

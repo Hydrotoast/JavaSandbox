@@ -1,0 +1,2 @@
+eclipse.preferences.version=1
+task-tag-projects-already-scanned=AWT,BinaryTree,CSSParser,CamelCasing,Collection,Coroutine,DiscreteSimulation,EventDispatcher,EventMachine,EventManager,GradientDescent,Graph,HashMap,Heap,HeapPriorityQueue,LinkedList,ObjectPool,Polymorphism,Queue,Router,Sandbox,SkipList,Stack,WeightedGradeAverage,LexicalAnalysis,DynamicProgramming,MinimumFlow

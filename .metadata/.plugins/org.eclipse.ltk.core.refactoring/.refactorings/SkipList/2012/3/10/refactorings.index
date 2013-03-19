@@ -1,0 +1,14 @@
+1330821664836	Rename local variable 'rightUpdates'
+1330821669425	Rename local variable 'numRightUpdate'
+1330837939979	Rename field 'head'
+1330862128548	Rename method 'searchHorizontal'
+1330862446292	Rename local variable 'rank'
+1330862497653	Rename local variable 'rank'
+1330862505733	Rename local variable 'i'
+1330862615463	Rename local variable 'k'
+1331070820672	Rename type variable 'K'
+1331070830409	Rename field 'key'
+1331070833679	Rename local variable 'key'
+1331247810906	Delete element
+1331247813864	Delete element
+1331248159461	Rename type 'SkipListMockRandom'

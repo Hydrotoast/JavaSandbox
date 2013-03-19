@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename local variable &apos;test&apos; in &apos;Sandbox.main(...)&apos; to &apos;node&apos;&#x0A;- Original project: &apos;Sandbox&apos;&#x0A;- Original element: &apos;Sandbox.main(String[]).test&apos;&#x0A;- Renamed element: &apos;test&apos;&#x0A;- Update references to refactored element" description="Rename local variable &apos;test&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/&lt;{Sandbox.java[Sandbox~main~\[QString;@test!492!503!495!498!QLN;!0!false" name="node" references="true" stamp="1350168357122" version="1.0"/>
+</session>

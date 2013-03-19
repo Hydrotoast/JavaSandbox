@@ -1,0 +1,13 @@
+1328336878060	Rename type variable 'E'
+1328336880651	Rename type variable 'EV'
+1328337761132	Infer generic type arguments
+1328343538942	Rename local variable 'largest'
+1328351836802	Infer generic type arguments
+1328351869588	Infer generic type arguments
+1328396057017	Rename method 'removeMin'
+1328399219526	Rename method 'min'
+1328399223847	Rename method 'removeMin'
+1328399229291	Rename type 'PriorityQueue'
+1328399322173	Rename type 'MaxPriorityQueue'
+1328399329786	Rename type 'Heap'
+1328399409242	Rename type 'HeapPriorityQueue'

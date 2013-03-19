@@ -1,0 +1,9 @@
+import edu.giocc.util.router.Content;
+import edu.giocc.util.router.DynamicRouter;
+
+public interface EventDispatcher extends DynamicRouter<Content> {
+	@Override
+	public void registerHandler(Class<? extends Event> type, Handler handler);
+
+	public void handle(Event e);
+}

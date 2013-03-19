@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename method &apos;AdHocPolymorphism.divide(...)&apos; to &apos;add&apos;&#x0A;- Original project: &apos;Polymorphism&apos;&#x0A;- Original element: &apos;AdHocPolymorphism.divide(...)&apos;&#x0A;- Renamed element: &apos;AdHocPolymorphism.add(...)&apos;&#x0A;- Update references to refactored element" delegate="false" deprecate="false" description="Rename method &apos;divide&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.method" input="/&lt;{AdHocPolymorphism.java[AdHocPolymorphism~divide~I~I" name="add" references="true" stamp="1329366137208" version="1.0"/>
+</session>

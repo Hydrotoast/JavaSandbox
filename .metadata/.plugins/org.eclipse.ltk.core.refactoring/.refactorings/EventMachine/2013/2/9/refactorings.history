@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;edu.giocc.EventMachine.ChatAIEventMachine.ChatEventHandler&apos; to &apos;ChatHandler&apos;&#x0A;- Original project: &apos;EventMachine&apos;&#x0A;- Original element: &apos;edu.giocc.EventMachine.ChatAIEventMachine.ChatEventHandler&apos;&#x0A;- Renamed element: &apos;edu.giocc.EventMachine.ChatAIEventMachine.ChatHandler&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;ChatEventHandler&apos;" flags="589826" id="org.eclipse.jdt.ui.rename.type" input="/&lt;edu.giocc.EventMachine{ChatAIEventMachine.java[ChatAIEventMachine[ChatEventHandler" matchStrategy="1" name="ChatHandler" qualified="false" references="true" similarDeclarations="false" stamp="1361905452680" textual="false" version="1.0"/>
+</session>

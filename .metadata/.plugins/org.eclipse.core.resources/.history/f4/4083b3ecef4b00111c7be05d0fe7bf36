@@ -1,0 +1,11 @@
+package devs;
+
+public abstract class Entity {
+	protected int timeCell;
+	protected int prevTime;
+	protected int util;
+	protected int entityNum;
+	protected boolean avail;
+
+	protected abstract void nextB();	
+}

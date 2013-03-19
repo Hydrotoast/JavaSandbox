@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;edu.giocc.util&apos; to &apos;edu.giocc.Graph&apos;&#x0A;- Original project: &apos;MinimumFlow&apos;&#x0A;- Original element: &apos;MinimumFlow/edu.giocc.util&apos;&#x0A;- Renamed element: &apos;MinimumFlow/edu.giocc.Graph&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename package &apos;edu.giocc.util&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/&lt;edu.giocc.util" name="edu.giocc.Graph" qualified="false" references="true" stamp="1346959503718" textual="false" version="1.0"/>
+</session>

@@ -1,0 +1,27 @@
+package edu.giocc.problems;
+
+public class CapitalBudgeting {
+	private static class Opportunity {
+		public int cost;
+		public int value;
+		
+		public Opportunity(int cost, int value) {
+			this.cost = cost;
+			this.value = value;
+		}
+	}
+	
+	public static int maxRevenue(Opportunity[] opportunities) {
+		int revenue = 0;
+		
+		return revenue;
+	}
+
+	public static void main(String[] args) {
+		Opportunity[] opportunities = new Opportunity[4];
+		opportunities[0] = new Opportunity(5000, 8000);
+		opportunities[0] = new Opportunity(7000, 11000);
+		opportunities[0] = new Opportunity(4000, 6000);
+		opportunities[0] = new Opportunity(3000, 4000);
+	}
+}
